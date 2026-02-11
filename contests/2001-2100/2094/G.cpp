@@ -26,7 +26,7 @@ void solve() {
   int q, s, k;
   deque<ll> que;
   bool reversed = false;
-  ll sum = 0, ans0 = 0, ans1 = 0, m = 0;
+  ll sum = 0, ans = 0, n = 0;
 
   cin >> q;
   for (int i = 1; i <= q; i++) {
@@ -36,41 +36,32 @@ void solve() {
       if (!reversed) {
         ll a = que.back();
         que.pop_back();
-        ans0 = (ans0 - m * a) + sum;
-        ans1 = (ans1 - sum) + m * a;
+        ans = ans - n * a + sum;
         que.push_front(a);
       } else {
         ll a = que.front();
         que.pop_front();
-
-        ans1 = (ans1 - m * a) + sum;
-        ans0 = (ans0 - sum) + m * a;
+        ans = ans - n * a + sum;
         que.push_back(a);
       }
     } else if (s == 2) {
       reversed = !reversed;
+      ans = sum * (n + 1) - ans;
     } else {
       cin >> k;
 
       sum += k;
-      m++;
+      n++;
+      ans = ans + n * k;
 
       if (!reversed) {
         que.push_back(k);
-        ans0 = ans0 + m * k;
-        ans1 = ans1 + sum;
       } else {
         que.push_front(k);
-        ans1 = ans1 + m * k;
-        ans0 = ans0 + sum;
       }
     }
 
-    if (!reversed) {
-      cout << ans0 << endl;
-    } else {
-      cout << ans1 << endl;
-    }
+    cout << ans << endl;
   }
 
   return;
