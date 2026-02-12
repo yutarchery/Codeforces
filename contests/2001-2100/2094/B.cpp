@@ -26,12 +26,7 @@ int n, m, l, r;
 
 void solve() {
   cin >> n >> m >> l >> r;
-
-  if (m <= abs(l)) {
-    cout << -1 * m << " " << 0 << endl;
-  } else {
-    cout << l << " " << m + l << endl;
-  }
+  cout << min(m, r) - m << " " << min(m, r) << endl;
 
   return;
 }
