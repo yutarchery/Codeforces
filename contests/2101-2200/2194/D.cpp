@@ -65,10 +65,8 @@ void solve() {
     ans += 'R';
   }
 
-  for (int i = ans.length() - 1; i >= 0; i--) {
-    cout << ans[i];
-  }
-  cout << '\n';
+  reverse(ans.begin(), ans.end());
+  cout << ans << '\n';
 
   return;
 }
